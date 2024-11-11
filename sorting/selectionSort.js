@@ -14,5 +14,6 @@ function selectionSort(array){
 
     }
     console.log(array);
+    return array;
 }
 selectionSort([34,2,23,38,90,42])
