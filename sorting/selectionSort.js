@@ -17,3 +17,20 @@ function selectionSort(array){
     return array;
 }
 selectionSort([34,2,23,38,90,42])
+
+
+function selectionSort2(arr){
+    for (let i = 0; i < arr.length; i++) {
+        const minimum = i;
+        for (let j = i+1; j < arr.length; j++) {
+            if(arr[minimum] > arr[j]){
+                minimum = j;
+            }  
+        }
+        temp = arr[i];
+        arr[i] = arr[minimum]
+        arr[minimum] = temp
+    }
+    console.log(arr);
+    return arr;
+}
