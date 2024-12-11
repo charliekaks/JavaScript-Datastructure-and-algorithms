@@ -7,7 +7,7 @@ function swap(array, i, j){
 
 //the function picks the first element, and places it in its sorted position where all the elements to the left
 // are smaller than it and all the elements to the right are larger. Then it returns the position of the selected element in the array.
-function pivot(array, start=0){
+function pivotFunction(array, start=0, end = array.length-1){
     pivot = array[start];
     swapIndex = 0;
 
@@ -22,4 +22,14 @@ function pivot(array, start=0){
     return swapIndex;
 }
 
-pivot([7,3,2,24,5,19]);
+//Recursive function to sort the array.
+function quickSort(arr, left=0 , right = arr.length-1){
+    if(left < right){ //base case to make sure the recursive calls end.
+    let pivotPoint = pivotFunction(arr, left, right); // Finding the pivot and placing first element to in sorted position.
+    quickSort(arr, left, pivotPoint-1);// Recursively sort the left side
+    quickSort(arr, pivotPoint+1, right);// Recursively sort the right side
+    }
+    return arr; // return sorted array.
+}
+
+quickSort([7,3,2,24,5,19]);
