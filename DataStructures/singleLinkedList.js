@@ -57,6 +57,20 @@ class singlyLinkedList {
         }
         return oldHead;
     }
+    unshift(value){
+        let node = new Node(value);
+        if(!this.head){
+            this.head = node;
+            this.tail = node;
+        }else{
+            let oldHead = this.head;
+            this.head = node;
+            node.next = oldHead;
+        }
+        this.length++;
+        return this;
+        
+    }
 }
 let list = new singlyLinkedList();
 list.push("hey");
@@ -65,4 +79,5 @@ list.push("there");
 list.push("boy");
 list.pop();
 list.shift();
+list.unshift("1000");
 console.log(list);
