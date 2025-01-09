@@ -25,10 +25,30 @@ class singlyLinkedList {
         return this;
 
     }
+    pop(){
+        if(this.length === 0){
+            return undefined;
+        }
+        let pre = this.head;
+        let current = this.head.next
+        while(current.next){
+            current = current.next
+            pre = pre.next   
+        }
+        this.tail = pre;
+        this.tail.next = null;
+        this.length--;
+        if(this.length === 0){
+            this.tail = null;
+            this.head = null;
+        }
+        return current;
+    }
 }
 let list = new singlyLinkedList();
 list.push("hey");
 list.push("you");
 list.push("there");
 list.push("boy");
+list.pop();
 console.log(list);
