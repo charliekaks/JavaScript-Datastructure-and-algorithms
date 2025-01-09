@@ -44,6 +44,19 @@ class singlyLinkedList {
         }
         return current;
     }
+    shift(){
+        if(this.length === 0){
+            return undefined;
+        }
+        let oldHead = this.head;
+        this.head = this.head.next;
+        oldHead.next = null;
+        this.length--;
+        if(this.length === 0){
+            this.tail = null;
+        }
+        return oldHead;
+    }
 }
 let list = new singlyLinkedList();
 list.push("hey");
@@ -51,4 +64,5 @@ list.push("you");
 list.push("there");
 list.push("boy");
 list.pop();
+list.shift();
 console.log(list);
