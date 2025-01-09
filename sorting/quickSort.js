@@ -21,6 +21,7 @@ function pivotFunction(array, start=0, end = array.length-1){
     console.log(array);
     return swapIndex;
 }
+pivotFunction([8,3,5,9,13,6])
 
 //Recursive function to sort the array.
 function quickSort(arr, left=0 , right = arr.length-1){
