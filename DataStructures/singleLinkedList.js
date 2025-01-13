@@ -103,7 +103,32 @@ class singlyLinkedList {
         return true
     }
     remove(index){
-        
+        if (index === 0) this.shift();
+        if (index === this.length) this.pop();
+        if (index < 0 || index > this.length) return undefined;
+
+        let prev = this.get(index-1);
+        let currentRemove = prev.next;
+        let post = currentRemove.next;
+
+        currentRemove.next = null;
+        prev.next = post;
+        this.length--;
+        return currentRemove;
+    }
+    reverse(){
+        let current = this.head;
+        this.head = this.tail;
+        this.tail = current;
+        let prev = null;
+        let next = null;
+        for (let i=0; i<this.length;i++){
+            next = current.next; //get the next node in the list
+            current.next = prev; //point the current node to the previous node
+            prev = current; //update previous node with current node 
+            current = next; // update the current node with next node
+        }
+        return this;
     }
 }
 let list = new singlyLinkedList();
@@ -111,8 +136,10 @@ list.push("hey");
 list.push("you");
 list.push("there");
 list.push("boy");
-list.pop();
-list.shift();
-list.unshift("1000");
-list.insert(2, "insert")
+// list.pop();
+// list.shift();
+// list.unshift("1000");
+// list.insert(2, "insert");
+list.remove(1);
+list.reverse();
 console.log(list);
