@@ -55,3 +55,4 @@ class BinarySearchTree{
         return current;
     }
 }
+module.exports = BinarySearchTree;
