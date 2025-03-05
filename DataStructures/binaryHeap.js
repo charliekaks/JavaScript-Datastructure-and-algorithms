@@ -20,13 +20,13 @@ class MaxBinaryHeap{
     }
 
     extractMax(){
-        const min = this.values[0];
+        const max = this.values[0];
         const end = this.values.pop();
         if(this.values.length > 0){
             this.values[0] = end;
             this.sinkDown();
         }
-        return min;
+        return max;
     }
     sinkDown(){
         let idx = 0;
@@ -40,15 +40,13 @@ class MaxBinaryHeap{
 
             if(leftChildIdx < length){
                 leftChild = this.values[leftChildIdx];
-                if(leftChild.priority < element.priority) {
-                    swap = leftChildIdx;
-                }
+                swap = leftChildIdx;
             }
             if(rightChildIdx < length){
                 rightChild = this.values[rightChildIdx];
                 if(
-                    (swap === null && rightChild.priority < element.priority) || 
-                    (swap !== null && rightChild.priority < leftChild.priority)
+                    (swap === null && rightChild < element) || 
+                    (swap !== null && rightChild < leftChild)
                 ) {
                    swap = rightChildIdx;
                 }
