@@ -43,6 +43,26 @@ class Graph{
         return results
     }
 
+    depthFirstIterative(start){
+        const stack = [];
+        const results = [];
+        const visited = {};
+        const adjacencyList = this.adjacencyList;
+        let currentVertex;
+        stack.push(start);
+        visited[start] = true;
+        while(stack.length > 0){
+            currentVertex = stack.pop();
+            results.push(currentVertex);
+            adjacencyList[currentVertex].forEach(neighbor => {
+                if(!visited[neighbor]){
+                    visited[neighbor] = true;
+                    stack.push(neighbor)
+                }
+            })
+        }
+    }
+
 }
 let g = new Graph();
 
